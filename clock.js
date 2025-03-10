@@ -1,25 +1,31 @@
 const updateClock = () =>{
     let now = new Date();
-    let hours = now.getHours().toString().padStart( 2, "0");
-    let minutes = now.getMinutes().toString().padStart( 2,"0");
-    let seconds = now.getSeconds().toString().padStart(2 , "0");
-    let periods = hours >= 12 ? "Pm" : "Am"; 
+    let hours = now.getHours().toString().padStart(2  , "0");
+    let minutes = now.getMinutes().toString().padStart(2  , "0");
+    let seconds = now.getSeconds().toString().padStart(2  , "0");
+    let period = hours >= 12 ? "Pm" : "Am"; 
+
     hours = hours % 12 || 12;
-    document.querySelector(".hours").textContent = hours
-    document.querySelector(".minutes").textContent = minutes
-    document.querySelector(".seconds").textContent = seconds
-    document.querySelector(".period").textContent = periods
-    
+    hours = hours.toString().padStart(2 , "0");
+
+    const myHours = document.querySelector(".hours").textContent = hours;
+    const myMinutes = document.querySelector(".minutes").textContent = minutes;
+    const mySeconds = document.querySelector(".seconds").textContent = seconds;
+    const myperiods = document.querySelector(".period").textContent = period;
+
+
+
     let body = document.body;
-    if(now.getHours() > 6 || now.getHours() < 18){
-        body.style.backgroundColor = "#123";
-        body.style.color = "#fff"
+    if(now.getHours() >= 3 && now.getHours() < 17){
+        body.style.backgroundColor = "  #03698f";
+        body.style.color = "	#f5f8fa"
     }else{
-        body.style.backgroundColor = "white"
-        body.style.color = "#123"
+        body.style.backgroundColor = "  #3e3e42";
+        body.style.color = "    #fff"
     }
-    
+
 }
 
 setInterval(updateClock , 1000);
+
 updateClock()
